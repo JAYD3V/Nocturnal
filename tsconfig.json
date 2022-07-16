@@ -1,0 +1,38 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "@tsconfig/node16/tsconfig.json",
+
+    "include": ["extension/**/*.ts"],
+    "exclude": ["node_modules", "*.d.ts", "*.d.ts.map"],
+
+    "compilerOptions": {
+        "lib": ["ES2022"],
+
+        // Module Resolution
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+
+        // TSC Emissions Config
+        "outDir": "dist",
+        "rootDir": "extension",
+        "declaration": true,
+        "sourceMap": true,
+        "inlineSources": true,
+        "noEmitOnError": true,
+        "noErrorTruncation": true,
+
+        // ADDITIONAL CHECKS
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "noUnusedLocals": false,
+        "noImplicitReturns": true,
+        "noImplicitOverride": true,
+        "noUnusedParameters": false,
+        "noUncheckedIndexedAccess": true,
+        "noFallthroughCasesInSwitch": true,
+        "exactOptionalPropertyTypes": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "importsNotUsedAsValues": "error"
+    }
+}

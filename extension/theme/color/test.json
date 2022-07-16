@@ -1,0 +1,10 @@
+{
+    "apples": ["Granny Smith", "Red Delicious"],
+    "catapult": {
+        "catapultKittens": "Really Really High",
+        "NoCatapultingChihuahuasThough": "No!!! No!!! No!!!",
+        "CatapultChickens": {
+            "intoBatter": "then the deep frier"
+        }
+    }
+}

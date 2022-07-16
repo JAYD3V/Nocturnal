@@ -1,0 +1,45 @@
+{
+    "name": "nocturnal",
+    "displayName": "NOCTURNAL",
+    "description": "Configurable Theme for VS Code",
+    "version": "0.0.1",
+    "publisher": "vscode-samples",
+    "categories": ["Other"],
+    "engines": { "vscode": "^1.50.0" },
+    "repository": { "url": "https://github.com/JAYD3V/Nocturnal" },
+
+    "devDependencies": {
+        "@tsconfig/node16": "^1.0.3",
+        "@types/node": "^18.0.4",
+        "@types/vscode": "^1.69.0",
+        "@typescript-eslint/eslint-plugin": "^5.30.6",
+        "@typescript-eslint/parser": "^5.30.6",
+        "eslint": "^8.19.0",
+        "typescript": "^4.7.4"
+    },
+
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "lint": "eslint . --ext .ts,.tsx",
+        "watch": "tsc -watch -p ./"
+    },
+
+    "contributes": {
+        "commands": [{
+                "command": "nocturnal.test",
+                "title": "NOCTURNAL: TEST"
+        }],
+
+        "themes": [{
+                "id": "nocturnal-theme-config",
+                "label": " Nocturnal Theme Configuration",
+                "uiTheme": "vs-dark",
+                "path": "./theme/nocturnal-vscode-theme.json"
+            }
+        ]
+    },
+
+    "activationEvents": ["onCommand:nocturnal.test"],
+    "main": "dist/extension.js"
+}
