@@ -2,8 +2,13 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "@tsconfig/node16/tsconfig.json",
 
-    "include": ["extension/**/*.ts"],
-    "exclude": ["node_modules", "*.d.ts", "*.d.ts.map"],
+    "include": [
+        "extension/**/*.ts",
+        "extension/json/color/*.json",
+        "extension/json/theme/*.json"
+    ],
+
+    "exclude": ["node_modules", "dist", "*.d.ts"],
 
     "compilerOptions": {
         "lib": ["ES2022"],
@@ -29,10 +34,10 @@
         "noImplicitReturns": true,
         "noImplicitOverride": true,
         "noUnusedParameters": false,
-        "noUncheckedIndexedAccess": true,
         "noFallthroughCasesInSwitch": true,
         "exactOptionalPropertyTypes": true,
-        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": false,
+        "noPropertyAccessFromIndexSignature": false,
         "importsNotUsedAsValues": "error"
     }
 }
