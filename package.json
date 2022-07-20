@@ -1,45 +1,71 @@
 {
     "name": "nocturnal",
-    "displayName": "NOCTURNAL",
-    "description": "Configurable Theme for VS Code",
+    "displayName": "Nocturnal",
     "version": "0.0.1",
-    "publisher": "vscode-samples",
-    "categories": ["Other"],
-    "engines": { "vscode": "^1.50.0" },
-    "repository": { "url": "https://github.com/JAYD3V/Nocturnal" },
-
+    "description": "Adds support for support for theme configuration.",
+    "license": "Apache-2.0",
+    "publisher": "jayd3v",
+    "author": "Andrew Chambers <W3Dojo@Gmail.com>",
+    "categories": [
+        "Other",
+        "Themes"
+    ],
+    "bugs": {
+        "url": "https://github.com/JAYD3V/Nocturnal/issues"
+    },
+    "repository": {
+        "url": "https://github.com/JAYD3V/Nocturnal.git"
+    },
+    "homepage": "https://github.com/JAYD3V/Nocturnal#readme",
     "devDependencies": {
-        "@tsconfig/node16": "^1.0.3",
-        "@types/node": "^18.0.4",
+        "@tsconfig/node16-strictest": "^1.0.3",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "^18.0.6",
         "@types/vscode": "^1.69.0",
-        "@typescript-eslint/eslint-plugin": "^5.30.6",
-        "@typescript-eslint/parser": "^5.30.6",
-        "eslint": "^8.19.0",
+        "@typescript-eslint/eslint-plugin": "^5.30.7",
+        "@typescript-eslint/parser": "^5.30.7",
+        "eslint": "^8.20.0",
+        "mocha": "^10.0.0",
         "typescript": "^4.7.4"
     },
-
+    "type": "commonjs",
+    "engines": {
+        "vscode": "^1.60.0",
+        "node": "^16.0.0"
+    },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "lint": "eslint . --ext .ts,.tsx",
         "watch": "tsc -watch -p ./"
     },
-
+    "main": "dist/extension/extension.js",
+    "activationEvents": [
+        "onStartupFinished",
+        "onCommand:nocturnal.test"
+    ],
     "contributes": {
-        "commands": [{
+        "commands": [
+            {
                 "command": "nocturnal.test",
-                "title": "NOCTURNAL: TEST"
-        }],
-
-        "themes": [{
+                "title": "NOCTURNAL: EXECUTE TEST"
+            },
+            {
+                "command": "nocturnal.cmd.alpha",
+                "title": "NOCTURNAL: CMD (alpha)"
+            },
+            {
+                "command": "nocturnal.cmd.beta",
+                "title": "NOCTURNAL: CMD (beta)"
+            }
+        ],
+        "themes": [
+            {
                 "id": "nocturnal-theme-config",
                 "label": " Nocturnal Theme Configuration",
                 "uiTheme": "vs-dark",
                 "path": "./theme/nocturnal-vscode-theme.json"
             }
         ]
-    },
-
-    "activationEvents": ["onCommand:nocturnal.test"],
-    "main": "dist/extension.js"
+    }
 }

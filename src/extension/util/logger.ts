@@ -8,13 +8,9 @@ type PromptType = 'error' | 'warning' | 'info' | 'debug';
 
 
 export class VSCLogger {
-    readonly #_statusCode = { error: 0, warning: 1, info: 2, debug: 3 };
     #_channel: vscode.OutputChannel;
     #_prompt;
     extName: string;
-
-
-
 
 
 
@@ -40,11 +36,12 @@ export class VSCLogger {
      *
      * @link https://github.com/JAYD3V/VSCode-Extension-Logger  */
     constructor(extName:string){
+        // const name = extName.toUpperCase();
         this.#_prompt = {
-            error   : fmt('[%s | \'error\'] - ', extName),
-            warning : fmt('[%s |  \'warn\'] - ', extName),
-            info    : fmt('[%s |  \'info\'] - ', extName),
-            debug   : fmt('[%s | \'debug\'] - ', extName)
+            error   : fmt('<%s: Error>', extName),
+            warning : fmt('<%s: Warn> ', extName),
+            info    : fmt('<%s: Info> ', extName),
+            debug   : fmt('<%s: Debug>', extName)
         };
 
         this.#_channel = vscode.window.createOutputChannel(extName);
@@ -53,7 +50,7 @@ export class VSCLogger {
 
 
     #_formatMesg = (promptType:PromptType, mesg:string, ...vals: any[]) =>
-        fmt('%s  %s', this.#_prompt[promptType], fmt(mesg, ...vals));
+        fmt('%s — %s', this.#_prompt[promptType], fmt(mesg, ...vals));
 
 
     #_status(status:PromptType, msg:string, ...vals: any[]){
@@ -65,7 +62,7 @@ export class VSCLogger {
      * Print a simple single string message in the developer's console as well as the user's ***"Output Window"***.
      * @param mesg String that will become the logged mesg. */
     mesg(mesg:string){
-        this.#_channel.appendLine(mesg + '\n');
+        this.#_channel.appendLine(mesg);
         console.info(mesg);
     }
 
