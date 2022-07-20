@@ -6,6 +6,7 @@
     "license": "Apache-2.0",
     "publisher": "jayd3v",
     "author": "Andrew Chambers <W3Dojo@Gmail.com>",
+    "type": "commonjs",
     "categories": [
         "Other",
         "Themes"
@@ -17,6 +18,10 @@
         "url": "https://github.com/JAYD3V/Nocturnal.git"
     },
     "homepage": "https://github.com/JAYD3V/Nocturnal#readme",
+    "engines": {
+        "vscode": "^1.60.0",
+        "node": "^16.0.0"
+    },
     "devDependencies": {
         "@tsconfig/node16-strictest": "^1.0.3",
         "@types/mocha": "^9.1.1",
@@ -26,24 +31,14 @@
         "@typescript-eslint/parser": "^5.30.7",
         "eslint": "^8.20.0",
         "mocha": "^10.0.0",
-        "typescript": "^4.7.4"
+        "typescript": "^4.7.4",
+        "typescript-eslint-language-service": "^5.0.0"
     },
-    "type": "commonjs",
-    "engines": {
-        "vscode": "^1.60.0",
-        "node": "^16.0.0"
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "lint": "eslint . --ext .ts,.tsx",
-        "watch": "tsc -watch -p ./"
-    },
+
     "main": "dist/extension/extension.js",
-    "activationEvents": [
-        "onStartupFinished",
-        "onCommand:nocturnal.test"
-    ],
+
+    "activationEvents": ["onStartupFinished", "onCommand:nocturnal.test"],
+
     "contributes": {
         "commands": [
             {
@@ -67,5 +62,14 @@
                 "path": "./theme/nocturnal-vscode-theme.json"
             }
         ]
+    },
+
+    "scripts": {
+        "sandbox": "node dist/sandbox.js",
+        "lint": "npm run lint:ts",
+        "lint:all": "npx eslint . --fix",
+        "lint:ts": "npx eslint ./src/**/*.ts --fix",
+        "lint:api": "npx eslint ./src/extension/**/* --fix",
+        "lint:extension": "npx eslint ./src/extension/**/* --fix"
     }
 }

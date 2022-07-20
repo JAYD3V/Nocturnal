@@ -1,17 +1,15 @@
-// TODO: Make entry about the user's output window as it pertains to this logger
-
 import * as vscode from 'vscode';
 import { format as fmt } from 'node:util';
+
 
 type PromptType = 'error' | 'warning' | 'info' | 'debug';
 
 
-
-export class VSCLogger {
+export class VSCLogger
+{
     #_channel: vscode.OutputChannel;
     #_prompt;
     extName: string;
-
 
 
     /**
@@ -35,7 +33,8 @@ export class VSCLogger {
      * below:
      *
      * @link https://github.com/JAYD3V/VSCode-Extension-Logger  */
-    constructor(extName:string){
+    constructor(extName:string)
+    {
         // const name = extName.toUpperCase();
         this.#_prompt = {
             error   : fmt('<%s: Error>', extName),
@@ -53,7 +52,8 @@ export class VSCLogger {
         fmt('%s — %s', this.#_prompt[promptType], fmt(mesg, ...vals));
 
 
-    #_status(status:PromptType, msg:string, ...vals: any[]){
+    #_status(status:PromptType, msg:string, ...vals: any[])
+    {
         this.mesg(this.#_formatMesg(status, msg, ...vals));
     }
 
@@ -61,11 +61,11 @@ export class VSCLogger {
     /**
      * Print a simple single string message in the developer's console as well as the user's ***"Output Window"***.
      * @param mesg String that will become the logged mesg. */
-    mesg(mesg:string){
+    mesg(mesg:string)
+    {
         this.#_channel.appendLine(mesg);
         console.info(mesg);
     }
-
 
 
     /**
@@ -74,11 +74,10 @@ export class VSCLogger {
      * information for the person reading the message to locate where the error
      * is at, but without printing so much that they miss an important detail.
      * Every part of an error message should be critically important. */
-    error(errMesg:string, ...vals: any[]){
+    error(errMesg:string, ...vals: any[])
+    {
         this.#_status('error', errMesg, ...vals);
     }
-
-
 
 
     /**
@@ -89,22 +88,20 @@ export class VSCLogger {
      * own self. Warning should be printed when a configuration or action
      * threatens the security or integrity of the system, or if working with a
      * server, possible nefarious activity. */
-    warning(warning:string, ...vals: any[]){
+    warning(warning:string, ...vals: any[])
+    {
         this.#_status('warning', warning, ...vals);
     }
-
-
 
 
     /**
      * @param info - Message should be informative, and not include any error
      * or warning info. The info printed should be new to the user, its counter
      * productive to print information that is already known. */
-    info(info:string, ...vals: any[]){
+    info(info:string, ...vals: any[])
+    {
         this.#_status('info', info, ...vals);
     }
-
-
 
 
     /**
@@ -113,7 +110,8 @@ export class VSCLogger {
      * issues that might arise. Good debugging messages can make a user's
      * experience far better, this is 10 times as true if the user is an I.T.
      * professional or another programmer. */
-    debug(debugInfo:string, ...vals: any[]){
+    debug(debugInfo:string, ...vals: any[])
+    {
         this.#_status('debug', debugInfo, ...vals);
     }
 }

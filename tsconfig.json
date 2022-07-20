@@ -2,22 +2,33 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "@tsconfig/node16-strictest/tsconfig.json",
 
-    "include": ["src/**/*.ts", "src/**/*.json"],
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.json"
+    ],
 
-    "exclude": ["node_modules", "dist", "*.d.ts", "*.d.ts.map"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "*.d.ts",
+        "*.d.ts.map"
+    ],
+
     "compilerOptions": {
         "lib": ["ES2022"],
         "target": "es2021",
-
         "outDir": "dist",
         "rootDir": "src",
-
         "esModuleInterop": true,
         "resolveJsonModule": true,
-
         "declaration": true,
         "sourceMap": true,
         "declarationMap": true,
-        "inlineSources": true
+        "inlineSources": true,
+
+        // ESLINT PLUGIN
+        "plugins": [
+            {"name": "typescript-eslint-language-service"}
+        ]
     }
 }
