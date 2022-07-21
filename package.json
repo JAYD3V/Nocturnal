@@ -69,7 +69,7 @@
         "lint": "npm run lint:ts",
         "lint:all": "npx eslint . --fix",
         "lint:ts": "npx eslint ./src/**/*.ts --fix",
-        "lint:api": "npx eslint ./src/extension/**/* --fix",
-        "lint:extension": "npx eslint ./src/extension/**/* --fix"
+        "test":  "mocha ./dist/test",
+        "test:rgb":  "mocha ./dist/test/rgb-util-methods.test.js"
     }
 }

@@ -1,7 +1,5 @@
-import { RGB } from './api/rgb-hsv.js';
+import { RGB } from './api/rgb.js';
 /*
-
-
  *-----------------------------------------------------------------------*
  *                                          HUE     SAT     VAL          *
  *-----------------------------------------------------------------------*
@@ -17,13 +15,14 @@ import { RGB } from './api/rgb-hsv.js';
  *  const rgb = new RGB(64, 64, 65);        240  |   2   |  25           *
  *  const rgb = new RGB(229, 7, 103);       334  |  97   |  90           *
  *=======================================================================*
+ */
 
-*/
 const rgb = new RGB(229, 7, 103); //       334  |  97  |  90
-const hsv = rgb.toHSV();
 
 rgb.print();
 
 console.log('\nHSV: ');
-console.log(hsv);
-console.log('foo');
+
+console.log('HUE: ' + rgb.HSV.hue);
+console.log('SAT: ' + rgb.HSV.sat);
+console.log('VAL: ' + rgb.HSV.val);

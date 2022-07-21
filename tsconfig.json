@@ -17,8 +17,10 @@
     "compilerOptions": {
         "lib": ["ES2022"],
         "target": "es2021",
+
         "outDir": "dist",
         "rootDir": "src",
+
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "declaration": true,
@@ -26,9 +28,7 @@
         "declarationMap": true,
         "inlineSources": true,
 
-        // ESLINT PLUGIN
-        "plugins": [
-            {"name": "typescript-eslint-language-service"}
-        ]
+        "importsNotUsedAsValues": "remove",
+        "plugins": [{ "name": "typescript-eslint-language-service" }]
     }
 }
