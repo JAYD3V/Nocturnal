@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-import { VSCLogger } from './util/logger.js';
+import { VSCLogger } from './lib/logger.js';
 
 const TEST_CMD = 'nocturnal.test';
 
@@ -14,6 +14,7 @@ export function activate (context: vscode.ExtensionContext){
    notify('Nocturnal Activated');
 
    const logger = new VSCLogger('Nocturnal');
+
    const disposable = vscode.commands.registerCommand(
       TEST_CMD,
       function (){

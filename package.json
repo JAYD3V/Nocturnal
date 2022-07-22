@@ -66,10 +66,9 @@
 
     "scripts": {
         "sandbox": "node dist/sandbox.js",
-        "lint": "npm run lint:ts",
-        "lint:all": "npx eslint . --fix",
-        "lint:ts": "npx eslint ./src/**/*.ts --fix",
+        "lint": "npx eslint src --fix",
         "test":  "mocha ./dist/test",
-        "test:rgb":  "mocha ./dist/test/rgb-util-methods.test.js"
+        "test:suite": "mocha ./dist/test/nocturnal.test-suit.js",
+        "test:exec-rgb":  "mocha ./dist/test/rgb-util-methods.test.js"
     }
 }

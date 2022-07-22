@@ -22,9 +22,8 @@ export default class RGB{
    #_max;
    #_min;
    #_D;
-
-
    /*
+
    -------- PUBLIC PROPERTIES -------- */
    HSV;
    /** RGB object's value for `red` */
@@ -87,17 +86,8 @@ export default class RGB{
    print (colorFormat?: 'rgb' | 'hsv'){
       colorFormat = colorFormat ?? 'rgb';
 
-      if (colorFormat === 'rgb'){
-         console.log(this.toString());
-      } else if (colorFormat === 'hsv'){
-         console.log(this.toString('hsv'));
-      } else {
-         throw new ReferenceError(
-            'An invalid argument was passed to the `RGB.print()\n`'
-            + 'method\'s parameter: `colorFormat`. Valid arguments\n'
-            + 'for the parameter are as follows:\n'
-            + '   1| "rgb"\n   2| "hsv\n   3| "undefined"\n'
-         );
+      if (colorFormat === 'rgb'){ console.log(this.toString()); } else if (colorFormat === 'hsv'){ console.log(this.toString('hsv')); } else {
+         throw new ReferenceError();
       }
    }
 

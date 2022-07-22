@@ -1,4 +1,4 @@
-import { RGB } from './api/rgb.js';
+import RGB from './engine/rgb.js';
 /*
  *-----------------------------------------------------------------------*
  *                                          HUE     SAT     VAL          *
