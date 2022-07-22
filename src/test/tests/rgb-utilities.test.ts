@@ -2,7 +2,7 @@
 // import { RGB } from '../api/rgb.js';
 // import { format as fmt } from 'node:util';
 
-import RGB from '../../engine/rgb.js';
+import Color from '../../engine/rgb.js';
 
 /*
  |*---------------------------------------------------------------|*
@@ -22,42 +22,26 @@ import RGB from '../../engine/rgb.js';
  |*== =============================================================|*
  */
 
+type Rgb = { red: number, grn: number, blu:number };
+type HSV = { hue:number, sat:number, val:number };
 
-type RGBxHSVxColorObj = {
-      RGB: { red: number, grn: number, blu:number },
-      HSV: { hue:number, sat:number, val:number }
-};
+function colorFmtTestArgs (name:string, expect: { rgb: Rgb, hsv: HSV }){
 
-
-function generateColorFormatTest (name: string,
-                                  expected: RGBxHSVxColorObj){
-   const { red: R, grn: G, blu: B } = expected.RGB;
-
-   const rgb = new RGB(R, G, B);
-
-   const actual = {
-      RGB : { red: rgb.red, grn: rgb.green, blu: rgb.blue },
-      HSV : { hue: rgb.HSV.hue, sat: rgb.HSV.sat, val: rgb.HSV.val }
-   };
-
+   const actual = new Color(expect.rgb.red, expect.rgb.grn,
+                            expect.rgb.blu);
    return {
       colorName : name,
-      expected  : expected,
-      actual    : actual
+      expect    : expect,
+      actual    : {
+         hsv : actual.hsv,
+         rgb : {
+            red : actual.red,
+            grn : actual.grn,
+            blu : actual.blu
+         }
+      }
    };
 }
 
-
-// const NOCTURNAL_UNIT_TEST = {
-//    foo: ''
-// }
-
-
-export default generateColorFormatTest;
-// TODO: REMOVE EXPORT STATEMENT
-/*
-'An invalid argument was passed to the `RGB.print()\n`'
-            + 'method\'s parameter: `colorFormat`. Valid arguments\n'
-            + 'for the parameter are as follows:\n'
-            + '   1| "rgb"\n   2| "hsv\n   3| "undefined"\n'
- */
+// TODO: Change default genColorFormatTestArg
+export default colorFmtTestArgs;
